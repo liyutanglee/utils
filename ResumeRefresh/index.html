@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>智联招聘60秒刷新简历</title>
+    	<meta http-equiv="refresh" content="30">
+	</head>
+	<script type="text/javascript">
+		window.onload=function(){
+			var time=new Date();
+			var m=time.getMonth()+1;
+			var t=time.getFullYear()+"-"+m+"-"+time.getDate()+" "+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+			if(window.name==""){window.name="1";}
+			else{window.name=eval(window.name)+1;}
+			console.log('第'+ window.name+'次刷新简历,时间为:'+t);
+			
+			var parent=document.getElementById('iframe2').contentWindow.document.getElementById('showdiv');
+			var div=document.createElement("div");
+			div.setAttribute("style","font-family:Arial;border:1px solid #379082;border-radius:5px;padding:2px 2px;width:100%;");
+			div.innerHTML="第"+ window.name+"次刷新简历,时间为:"+t;
+			parent.appendChild(div);
+			
+		}
+	</script>
+	<frameset rows="0.1%,99.9%" FRAMEspacing=1 border=0>
+		<frame src="https://i.zhaopin.com/ResumeCenter/MyCenter/RefreshResume?resumeId=204491322&resumenum=JM232909845R90250000000&version=1&language=1" id="iframe1" name="iframe1">
+		<frame src="show.html" id="iframe2" name="iframe2">
+  	</frameset>
+	
+</html>
+
