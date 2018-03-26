@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+   	<meta charset="utf-8"> 
+    <title>test</title>
+    <link rel="stylesheet" href="bootstrap.min.css">  
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+	<script>
+		function encodeText(){
+			document.getElementById('errpanel').innerHTML = "";
+			var enstr=document.getElementById("str").value;
+			console.log(b64Encode(enstr));
+			document.getElementById('showpanel').innerHTML = "";
+			var parent = document.getElementById('showpanel');
+			var div = document.createElement("div");
+			div.setAttribute("class", "panel-body");
+			div.innerHTML = "encode："+b64Encode(enstr);
+　　　　	 parent.appendChild(div);
+		}
+		function decodeText(){
+			document.getElementById('errpanel').innerHTML = "";
+			var destr=document.getElementById("str").value;
+			console.log(b64Decode(destr));
+			document.getElementById('showpanel').innerHTML = "";
+			var parent = document.getElementById('showpanel');
+			var div = document.createElement("div");
+			div.setAttribute("class", "panel-body");
+			div.innerHTML = "decode："+b64Decode(destr);
+　　　　	 parent.appendChild(div);
+		}
+		function b64Encode(str) {
+      		return btoa(encodeURIComponent(str));
+  		}
+		function b64Decode(str) {
+      		return decodeURIComponent(atob(str));
+  		}
+  	
+		window.onerror = function (errorMessage, scriptURI, lineNumber, columnNumber, errorObj) {
+        	var info = "错误信息：" + errorMessage + "</br>" +
+            	"出错文件：" + scriptURI + "</br> " +
+                "出错行号：" + lineNumber + "</br>" +
+                "出错列号：" + columnNumber + "</br>" +
+                "错误详情：" + errorObj + "</br></br>";
+			document.getElementById('errpanel').innerHTML = "";
+			var parent = document.getElementById('errpanel');
+			var div = document.createElement("div");
+			div.innerHTML = info+"<br>";
+　　　　	 parent.appendChild(div);
+    	}
+		
+	</script>
+</head>
+<body>
+	<div style="padding: 50px 50px 10px;">
+		<div class="input-group">
+			<span class="input-group-addon">Text</span>
+			<input type="text" class="form-control" id="str">
+		</div>
+		<button type="button" class="btn btn-primary" style="margin-top:15px" onclick="encodeText()">encode</button>
+		<button type="button" class="btn btn-primary" style="margin-top:15px" onclick="decodeText()">decode</button>
+	</div>
+	
+	<div style="padding: 10px 50px 10px;">
+		<div id="showpanel" class="panel panel-default">
+		</div>
+	</div>
+
+	<div style="padding: 10px 50px 10px;">
+		<div id="errpanel">
+		</div>
+	</div>
+</body>
+</html>
