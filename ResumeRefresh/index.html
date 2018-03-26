@@ -16,6 +16,7 @@
 			var parent=document.getElementById('iframe2').contentWindow.document.getElementById('showdiv');
 			var div=document.createElement("div");
 			div.setAttribute("style","font-family:Arial;border:1px solid #379082;border-radius:5px;padding:2px 2px;width:100%;");
+			div.setAttribute("class","panel-body");
 			div.innerHTML="第"+ window.name+"次刷新简历,时间为:"+t;
 			parent.appendChild(div);
 			
